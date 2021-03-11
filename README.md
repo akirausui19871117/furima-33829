@@ -4,8 +4,8 @@
 |column            |types |Options                |
 |------------------|------|-----------------------|
 |nickname          |string|null: false            |
-|email             |string|null: false            |
-|encrypted_password|string|null: false,unique:true|
+|email             |string|null: false,unique:true|
+|encrypted_password|string|null: false            |
 |family_name       |string|null: false            |
 |first_name        |string|null: false            |
 |family_name_kana  |string|null: false            |
@@ -24,7 +24,7 @@ has many :buys
 |category_id     |integer      |null: false                   |
 |condition_id    |integer      |null: false                   |
 |delivery_fee_id |integer      |null: false                   |
-|delivery_area_id|integer      |null: false                   |
+|prefecture_id   |integer      |null: false                   |
 |delivery_day_id |integer      |null: false                   |
 |price           |integer      |null: false                   |
 |user            |reference    |null: false, foreign_key: true|
@@ -49,8 +49,9 @@ has_one :destination
 |--------------|---------|------------------------------|
 |postal_code   |string   |null: false                   |
 |prefecture_id |integer  |null: false                   |
+|city          |string   |null: false                   |
 |addresses     |string   |null: false                   |
-|building      |string   |null: false                   |
+|building      |string   |                              |
 |phone_number  |string   |null: false                   |
 |buy           |reference|null: false, foreign_key: true|
 
