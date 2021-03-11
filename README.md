@@ -10,7 +10,7 @@
 |first_name        |string|null: false            |
 |family_name_kana  |string|null: false            |
 |first_name_kana   |string|null: false            |
-|birthday          |string|null: false            |
+|birthday          |date  |null: false            |
 
 ### Association
 has many :items
@@ -52,12 +52,11 @@ has_one :destination
 |addresses     |string   |null: false                   |
 |building      |string   |null: false                   |
 |phone_number  |string   |null: false                   |
-|user          |reference|null: false, foreign_key: true|
 |buy           |reference|null: false, foreign_key: true|
 
 ### Association
 belongs_to :buy
-belongs_to :user
+
 
 
 
