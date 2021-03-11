@@ -17,17 +17,17 @@ has many :items
 has many :buys
 
 ### itemsテーブル
-|column          |types        |Options                       |
-|----------------|-------------|------------------------------|
-|item_name       |string       |null: false                   |
-|explanation     |text         |null: false                   |
-|category_id     |integer      |null: false                   |
-|condition_id    |integer      |null: false                   |
-|delivery_fee_id |integer      |null: false                   |
-|prefecture_id   |integer      |null: false                   |
-|delivery_day_id |integer      |null: false                   |
-|price           |integer      |null: false                   |
-|user            |reference    |null: false, foreign_key: true|
+|column          |types         |Options                     |
+|----------------|--------------|----------------------------|
+|item_name       |string        |null: false                 |
+|explanation     |text          |null: false                 |
+|category_id     |integer       |null: false                 |
+|condition_id    |integer       |null: false                 |
+|delivery_fee_id |integer       |null: false                 |
+|prefecture_id   |integer       |null: false                 |
+|delivery_day_id |integer       |null: false                 |
+|price           |integer       |null: false                 |
+|user            |references    |foreign_key: true           |
 
 ### Association
 belongs_to :user
@@ -35,9 +35,9 @@ has_one :buy
 
 ### buyテーブル
 |column     |types    |Options                       |
-|-----------|---------|------------------------------|
-|item       |reference|null: false, foreign_key: true|
-|user       |reference|null: false, foreign_key: true|
+|-----------|----------|-------------------|
+|item       |references|foreign_key: true  |
+|user       |references|foreign_key: true  |
 
 ### Association
 belongs_to :user
@@ -45,15 +45,15 @@ belongs_to :item
 has_one :destination
 
 ### destinationテーブル
-|column      |types  |Options                       |
-|--------------|---------|------------------------------|
-|postal_code   |string   |null: false                   |
-|prefecture_id |integer  |null: false                   |
-|city          |string   |null: false                   |
-|addresses     |string   |null: false                   |
-|building      |string   |                              |
-|phone_number  |string   |null: false                   |
-|buy           |reference|null: false, foreign_key: true|
+|column        |types     |Options            |
+|--------------|----------|-------------------|
+|postal_code   |string    |null: false        |
+|prefecture_id |integer   |null: false        |
+|city          |string    |null: false        |
+|addresses     |string    |null: false        |
+|building      |string    |                   |
+|phone_number  |string    |null: false        |
+|buy           |references|foreign_key: true  |
 
 ### Association
 belongs_to :buy
