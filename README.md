@@ -19,7 +19,7 @@ has many :buys
 ### itemsテーブル
 |column          |types         |Options                     |
 |----------------|--------------|----------------------------|
-|item_name       |string        |null: false                 |
+|name            |string        |null: false                 |
 |explanation     |text          |null: false                 |
 |category_id     |integer       |null: false                 |
 |condition_id    |integer       |null: false                 |
@@ -33,7 +33,7 @@ has many :buys
 belongs_to :user
 has_one :buy
 
-### buyテーブル
+### buysテーブル
 |column     |types    |Options                       |
 |-----------|----------|-------------------|
 |item       |references|foreign_key: true  |
@@ -44,7 +44,7 @@ belongs_to :user
 belongs_to :item
 has_one :destination
 
-### destinationテーブル
+### destinationsテーブル
 |column        |types     |Options            |
 |--------------|----------|-------------------|
 |postal_code   |string    |null: false        |
