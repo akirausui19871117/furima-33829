@@ -61,3 +61,4 @@ group :development do
 
 gem 'devise'
 gem 'pry-rails'
+gem 'faker'
