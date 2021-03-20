@@ -31,6 +31,11 @@ require 'rails_helper'
       end
 
       context'ユーザー新規登録できないとき' do
+        it "nicknameが空だと登録できない" do
+          @user.nickname = " " 
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Nickname can't be blank")
+        end
         it "emailが空だと登録できない" do
           @user.email = " " 
           @user.valid?
@@ -138,6 +143,11 @@ require 'rails_helper'
           @user.first_name_kana = "aaaaaa"
           @user.valid?
           expect(@user.errors.full_messages).to include( "First name kana Full-width katakana characters" )
+        end
+        it "birthdayが空だと登録できない" do
+          @user.birthday = " "
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Birthday can't be blank")
         end
       end
     end
