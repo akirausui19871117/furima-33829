@@ -34,7 +34,7 @@ belongs_to :user
 has_one :buy
 
 ### buysテーブル
-|column     |types    |Options                       |
+|column     |types    　|Options             |
 |-----------|----------|-------------------|
 |item       |references|foreign_key: true  |
 |user       |references|foreign_key: true  |
