@@ -53,23 +53,17 @@ require 'rails_helper'
           @user.valid?
           expect(@user.errors.full_messages).to include("Email is invalid")
         end
-      
+        
         it "passwordが６文字以上でないと登録できない" do
-          @user.password = "1111a"
-          @user.valid?
-          expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+        @user.password = "1111a"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
         end
 
         it "passwordが空だと登録できない" do
           @user.password = " "
           @user.valid?
           expect(@user.errors.full_messages).to include("Password can't be blank")
-        end
-
-        it "passwordが６文字以上でないと登録できない" do
-          @user.password = "1111a"
-          @user.valid?
-          expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
         end
 
         it "passwordとpassword_confirmationが同じでないと登録できない" do
