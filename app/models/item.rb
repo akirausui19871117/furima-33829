@@ -2,7 +2,11 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :buy
   has_one_attached :image
-  has_many :categories, :conditions, :delivery_day, :delivery_fee, :prefecture
+  has_many :categories
+  has_many :conditions
+  has_many :delivery_days 
+  has_many :delivery_fee
+  has_many :prefecture
   
 
   with_options presence: true do

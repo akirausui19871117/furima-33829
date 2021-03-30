@@ -7,4 +7,5 @@ class DeliveryFee < ActiveHash::Base
   ]
   include ActiveHash::Associations
  belongs_to :item
+ 
 end
