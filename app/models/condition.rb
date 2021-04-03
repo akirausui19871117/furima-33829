@@ -8,6 +8,6 @@ class Condition < ActiveHash::Base
     { id: 6, name: '傷や汚れあり'}
   ]
   include ActiveHash::Associations
-  belongs_to :item
+  has_many :item
 end
 
