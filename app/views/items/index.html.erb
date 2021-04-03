@@ -126,8 +126,8 @@
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
     <ul class='item-lists'>
       <% if @items.present? %>
-      <li class='list'>
       <%@items.each do |item| %>
+      <li class='list'> 
         <%= link_to '#' do %>
         <div class='item-img-content'>
           <%= image_tag item.image ,class: "item-img" %>
@@ -175,7 +175,6 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
   <%# /商品一覧 %>
