@@ -6,17 +6,16 @@
     <h2 class="name">
       <%= @item.name %>
     </h2>
-    <%if @item.present? %>
+    <%# <%if @item.present? %> 
     <div class="item-img-content">
       <%= image_tag @item.image ,class:"item-box-img" %>
-    <% else %>
+    <%# <% else %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
     </div>
-    <% end %>
+    <%# <% end %> 
 
-    <% if user_signed_in? && @item.present? %>
       <div class="item-price-box">
         <span class="item-price">
           ¥ <%= @item.price %>
@@ -24,6 +23,7 @@
         <span class="item-postage">
           <%= @item.delivery_fee.name %>
         </span>
+    <% if user_signed_in?%>
       <%if current_user.id == @item.user_id %>
         <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
       <p class="or-text">or</p>
