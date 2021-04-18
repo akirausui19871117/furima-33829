@@ -4,7 +4,10 @@ class BuysController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @buy_address = BuyAddress.new
-
+    if current_user.id == @item.user.id
+      redirect_to root_path
+    end
+    
   end
 
   def new
@@ -34,6 +37,5 @@ class BuysController < ApplicationController
   def buys_params
     params.require(:buy_address).permit(:postal_code, :prefecture_id, :city,:house_number, :building_name,:phone_number).merge(token: params[:token],user_id: current_user.id, item_id:@item.id )
   end
-
 
 end
