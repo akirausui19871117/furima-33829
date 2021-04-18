@@ -44,7 +44,7 @@ belongs_to :user
 belongs_to :item
 has_one :destination
 
-### destinationsテーブル
+### addressesテーブル
 |column        |types     |Options            |
 |--------------|----------|-------------------|
 |postal_code   |string    |null: false        |
