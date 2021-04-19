@@ -3,6 +3,8 @@ class BuyAddress
   attr_accessor :token,:item_id,:user_id,:token,:postal_code,:prefecture_id, :city, :house_number,:phone_number, :building_name
 
   with_options presence:true do
+    validates :item_id
+    validates :user_id
     validates :token
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "Input correctly"}
     validates :city
