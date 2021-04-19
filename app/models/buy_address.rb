@@ -9,7 +9,7 @@ class BuyAddress
     validates :house_number
     validates :phone_number,numericality: {message: "Input only number"}
   end
-    validates :prefecture_id,numericality: {other_than: 0, message: "can't be blank"}
+    validates :prefecture_id,numericality: {other_than: 0, message: "Select"}
 
 
 

@@ -10,6 +10,11 @@ RSpec.describe BuyAddress, type: :model do
         it 'すべてのデータが入力されていればできる' do
           expect(@buy_address).to be_valid
         end
+
+        it '建物名が空でも投稿できる' do
+          @buy_address.building_name = " "
+          expect(@buy_address).to be_valid
+
       end
   
       context '商品が購入できない' do
@@ -30,6 +35,12 @@ RSpec.describe BuyAddress, type: :model do
           @buy_address.valid?
           expect(@buy_address.errors.full_messages).to include("Postal code Input correctly")
         end
+
+        it 'prefecture_idが未選択の場合は登録できないこと' do
+          @buy_address.prefecture_id = 1
+          @buy_address.valid?
+        end
+
 
         it '市区町村が空では投稿できない' do
           @buy_address.city = ' '
@@ -54,7 +65,29 @@ RSpec.describe BuyAddress, type: :model do
           @buy_address.valid?
           expect(@buy_address.errors.full_messages).to include("Phone number Input only number")
         end
-      end
+
+        it '電話番号が12桁以上の場合は登録できないこと' do
+          @buy_address.phone_number = '090090909090'
+          @buy_address.valid?
+        end
+
+        it '電話番号が英数混合の場合は登録できないこと' do
+          @buy_address.phone_number = '0901234567a'
+          @buy_address.valid?
+          expect(@buy_address.errors.full_messages).to include("Phone number Input only number")
+        end
+        it 'item_idが空では登録できないこと' do
+          @buy_address.item_id = ' '
+          @buy_address.valid?
+
+        end
+        it 'user_idが空では登録できないこと' do
+          @buy_address.user_id = ' '
+          @buy_address.valid?
+        end
+
     end
   end
+end
+end
 

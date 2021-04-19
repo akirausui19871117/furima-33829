@@ -1,16 +1,12 @@
 class BuysController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index,:create]
   before_action :set_item,only: [:index,:create]
-  before_action :move_to_index_url, only: [:index]
+  before_action :move_to_index_url, only: [:index,:create]
   
   def index
     @buy_address = BuyAddress.new
-    if current_user.id == @item.user.id
-      redirect_to root_path
-    end
-
-
   end
+
 
   def new
     @buy_address = BuyAddress.new
@@ -30,8 +26,8 @@ class BuysController < ApplicationController
     else
       render :index
     end
-
   end
+end
 
   private
 
@@ -44,10 +40,9 @@ class BuysController < ApplicationController
   end
 
   def move_to_index_url
-    if @item.buy.present?
+    if @item.buy.present? || current_user.id == @item.user.id
       redirect_to root_path
     end
-
   end
-end
+
 
