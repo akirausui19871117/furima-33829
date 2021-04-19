@@ -2,11 +2,14 @@ require 'rails_helper'
 
 RSpec.describe BuyAddress, type: :model do
     before do
-      @buy_address = FactoryBot.build(:buy_address)
+        @user = FactoryBot.create(:user)
+        @item = FactoryBot.create(:item)
+        @buy_address = FactoryBot.build(:buy_address, user_id: @user.id , item_id: @item.id)
+        sleep 0.1
     end
   
     describe '商品購入機能' do
-      context '出品ができる場合' do
+      context '購入ができる場合' do
         it 'すべてのデータが入力されていればできる' do
           expect(@buy_address).to be_valid
         end
@@ -14,7 +17,7 @@ RSpec.describe BuyAddress, type: :model do
         it '建物名が空でも投稿できる' do
           @buy_address.building_name = " "
           expect(@buy_address).to be_valid
-
+         end
       end
   
       context '商品が購入できない' do
@@ -29,7 +32,7 @@ RSpec.describe BuyAddress, type: :model do
           @buy_address.valid?
           expect(@buy_address.errors.full_messages).to include("Postal code can't be blank")
         end
-  
+
         it '郵便番号にハイフン（ー）含まれていないととうろくできない' do
           @buy_address.postal_code = '1234567'
           @buy_address.valid?
@@ -76,11 +79,12 @@ RSpec.describe BuyAddress, type: :model do
           @buy_address.valid?
           expect(@buy_address.errors.full_messages).to include("Phone number Input only number")
         end
+
         it 'item_idが空では登録できないこと' do
           @buy_address.item_id = ' '
           @buy_address.valid?
-
         end
+
         it 'user_idが空では登録できないこと' do
           @buy_address.user_id = ' '
           @buy_address.valid?
@@ -88,6 +92,5 @@ RSpec.describe BuyAddress, type: :model do
 
     end
   end
-end
 end
 
