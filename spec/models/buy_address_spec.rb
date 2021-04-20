@@ -73,6 +73,7 @@ RSpec.describe BuyAddress, type: :model do
         it '電話番号が12桁以上の場合は登録できないこと' do
           @buy_address.phone_number = '090090909090'
           @buy_address.valid?
+          expect(@buy_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
         end
 
         it '電話番号が英数混合の場合は登録できないこと' do
@@ -84,11 +85,13 @@ RSpec.describe BuyAddress, type: :model do
         it 'item_idが空では登録できないこと' do
           @buy_address.item_id = ' '
           @buy_address.valid?
+          expect(@buy_address.errors.full_messages).to include("Item can't be blank")
         end
 
         it 'user_idが空では登録できないこと' do
           @buy_address.user_id = ' '
           @buy_address.valid?
+          expect(@buy_address.errors.full_messages).to include("User can't be blank")
         end
 
     end
