@@ -42,13 +42,14 @@ RSpec.describe BuyAddress, type: :model do
         it 'prefecture_idが未選択の場合は登録できないこと' do
           @buy_address.prefecture_id = 1
           @buy_address.valid?
+          expect(@buy_address.errors.full_messages).to include("Prefecture Select")
         end
 
 
         it '市区町村が空では投稿できない' do
           @buy_address.city = ' '
           @buy_address.valid?
-            expect(@buy_address.errors.full_messages).to include("City can't be blank")
+          expect(@buy_address.errors.full_messages).to include("City can't be blank")
         end
 
         it '番地が空では登録できない' do
