@@ -60,4 +60,3 @@ belongs_to :buy
 
 
 
-
