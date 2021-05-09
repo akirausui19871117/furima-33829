@@ -1,0 +1,38 @@
+<%= render "shared/second-header"%>
+<div class="form-group">
+    <p class='form-info-header'>
+住所情報登録
+    </p>
+    <p class='form-info-text'>
+</div>
+
+<%= form_for @address do |f| %>
+  <%= render "devise/shared/error_messages", resource: @address %>
+
+   <div class="form-group">
+    <div class='form-text-wrap'>
+    <%= f.label :"郵便番号", class:"form-text" %><br />
+    <%= f.text_field :postal_code, class:"input-address" ,placeholder:"例：123-4567" %>
+    </div>
+   </div>
+
+   <div class="form-group">
+    <div class='form-text-wrap'>
+    <%= f.label :住所 ,class:"form-text" %><br />
+    <%= f.text_field :address ,class:"input-address" ,placeholder:"例：東京都港区芝公園３丁目５−８"%>
+    </div>
+  </div>
+  <div class="form-group">
+    <h2 class='form-bottom-text'>
+      下記のボタンを押すことにより、
+      <span>利用規約</span>
+      <br>に同意したものとみなします
+    </h2>
+  </div>
+  <div class='register-btn'>
+      <%= f.submit "会員登録" ,class:"register-red-btn" %>
+  </div>
+<% end %>
+
+<%= render "shared/second-footer"%>
+
