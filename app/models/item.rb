@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :buy
   has_one_attached :image
+  has_many :messages
   belongs_to :category
   belongs_to :condition
   belongs_to :delivery_fee
