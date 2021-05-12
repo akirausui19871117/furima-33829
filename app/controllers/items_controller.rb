@@ -3,10 +3,13 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :move_to_index_url, only: [:edit,:destroy]
+  before_action :search_item, only[:index,:search]
 
   def index
     @items = Item.order(created_at: :desc)
   end
+  
+  
 
   def new
     @item = Item.new
@@ -61,6 +64,10 @@ class ItemsController < ApplicationController
     if @item.buy.present?
       redirect_to root_path
     end
+  end
+
+  def search_item
+    @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
 
   

@@ -60,6 +60,7 @@ group :development do
  end
 
 gem 'devise'
+gem 'ransack'
 gem 'pry-rails'
 gem 'faker'
 gem 'mini_magick'

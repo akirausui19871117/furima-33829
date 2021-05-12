@@ -14,4 +14,5 @@ class MessagesController < ApplicationController
   def message_params
     params.permit(:text).merge(user_id: current_user.id, item_id: params[:item_id])
   end
+  
 end

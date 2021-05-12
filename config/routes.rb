@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   root to: "items#index"
+  get 'items/search'
   resources :items  do
     resources :buys, only: [:index,:create]
     resources :messages, only: [:create]
