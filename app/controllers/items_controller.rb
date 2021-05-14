@@ -1,15 +1,17 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update,:destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_item, only: [:edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
-  before_action :move_to_index_url, only: [:edit,:destroy]
-  before_action :search_item, only[:index,:search]
+  before_action :move_to_index_url, only: [:edit, :destroy]
+  before_action :search_item, only: [:index, :search]
 
   def index
     @items = Item.order(created_at: :desc)
   end
-  
-  
+
+  def search
+    @results = @p.result
+  end
 
   def new
     @item = Item.new
@@ -61,14 +63,10 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index_url
-    if @item.buy.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.buy.present?
   end
 
   def search_item
     @p = Item.ransack(params[:q])  # 検索オブジェクトを生成
   end
-
-  
 end
